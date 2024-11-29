@@ -1,6 +1,9 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * * ?" # 注意，GitHub Action的时区为UTC+0，与北京时间（UTC+8）存在时差，所以需要换算下时间。
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
