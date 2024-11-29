@@ -1,0 +1,11 @@
+{
+  "name": "stock-workflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task.js",
+  "scripts": {
+    "start": "node ./task.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
