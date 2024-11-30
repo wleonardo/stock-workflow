@@ -1,12 +1,12 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: ndx100 数据执行
+run-name: ${{ github.actor }} is running GitHub Actions 🚀
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 20 * * *" # 注意，GitHub Action的时区为UTC+0，与北京时间（UTC+8）存在时差，所以需要换算下时间。
 jobs:
-  blog:
-    name: Blog
+  ndx:
+    name: NDX100
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,15 +31,11 @@ jobs:
       - name: Commit files 
         id: commit-files
         run: |
-          if [ -n "$(git status --porcelain README.md)" ]; then
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git add README.md
-            git commit -m "docs: update blog"
-            echo "hasChange=true" >> $GITHUB_OUTPUT
-          else
-            echo "No changes detected"
-          fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "docs: update ndx data"
+          echo "hasChange=true" >> $GITHUB_OUTPUT
       - name: Push changes
         uses: ad-m/github-push-action@master
         if: ${{ steps.commit-files.outputs.hasChange == 'true' }}
