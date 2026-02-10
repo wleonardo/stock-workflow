@@ -1,0 +1,26 @@
+{
+  "timestamp": 1770709154252,
+  "data": [
+    {
+      "code": "PDD-US"
+    },
+    {
+      "code": "MSFT-US"
+    },
+    {
+      "code": "AAPL-US"
+    },
+    {
+      "code": "GOOG-US"
+    },
+    {
+      "code": "UNH-US"
+    },
+    {
+      "code": "BRK.B-US"
+    },
+    {
+      "code": "GLDM-US"
+    }
+  ]
+}
