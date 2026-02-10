@@ -54,7 +54,7 @@ async function start() {
         const price = await getPrice(code);
         return { code, price };
       },
-      5 * 1000
+      20 * 1000
     );
 
     console.info(results);
