@@ -4,15 +4,21 @@ var fs = require('fs-extra');
 const axios = require('axios');
 const moment = require('moment');
 const htmlParser = require('node-html-parser');
+const zlib = require('zlib');
 
 
 const getPrice = async (companyCode) => {
   // const html = await axios.get(`https://www.futunn.com/stock/${companyCode}`);
 
   const html = await axios.get(`https://hk.finance.yahoo.com/quote/${companyCode}/`,{
-  headers: { 'Accept-Encoding': 'identity' }, // Ask server not to compress
-  decompress: false, // Disable Axios's decompression
-});
+    decompress: false,  // 禁用自动解压
+    responseType: 'arraybuffer'  // 或 'stream'
+  }).then(response => {
+    const data = response.data;
+    // 使用 zlib 解压
+    const unzippedData = zlib.unzipSync(data);
+    console.log(unzippedData.toString());
+  })
 
   const htmlDoc = htmlParser.parse(html.data);
 
