@@ -9,9 +9,9 @@ const htmlParser = require('node-html-parser');
 const getPrice = async (companyCode) => {
   const html = await axios.get(`https://www.futunn.com/stock/${companyCode}`);
 
-  const htmlDoc = htmlParser.parse(html.data);
+  console.info('htmlData', html.data)
 
-  console.info('htmlDoc', htmlDoc)
+  const htmlDoc = htmlParser.parse(html.data);
 
   // 非正式价格（盘后、夜盘、盘前）
   const informalPrice = htmlDoc.querySelector('.disc-info .price-current .disc-price')?.textContent?.trim();
@@ -72,7 +72,7 @@ async function start() {
       data: results
     }, null, '  '))
 
-    console.log(`更新 ${date} 成功`);
+    console.log(`更新 ${timestamp} 成功`);
   } catch (error) {
     console.error(error);
     throw Error(`更新失败，数据为空`)
