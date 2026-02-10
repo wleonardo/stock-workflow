@@ -20,6 +20,8 @@ const getPrice = async (companyCode) => {
     console.log(unzippedData.toString());
   })
 
+  console.info(html.data.toString())
+
   const htmlDoc = htmlParser.parse(html.data);
 
   const currentPrice = htmlDoc.querySelector('#main-content-wrapper .price .container section:last-child .price')?.textContent?.trim();
