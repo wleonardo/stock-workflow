@@ -11,6 +11,8 @@ const getPrice = async (companyCode) => {
 
   const htmlDoc = htmlParser.parse(html.data);
 
+  console.info('htmlDoc', htmlDoc)
+
   // 非正式价格（盘后、夜盘、盘前）
   const informalPrice = htmlDoc.querySelector('.disc-info .price-current .disc-price')?.textContent?.trim();
 
