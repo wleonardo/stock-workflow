@@ -9,21 +9,13 @@ const htmlParser = require('node-html-parser');
 const getPrice = async (companyCode) => {
   // const html = await axios.get(`https://www.futunn.com/stock/${companyCode}`);
 
-  const html =  await axios.get('https://hk.finance.yahoo.com/quote/MSFT/');
+  const html = await axios.get('https://hk.finance.yahoo.com/quote/MSFT/');
 
   console.info('htmlData', html.data)
 
   const htmlDoc = htmlParser.parse(html.data);
 
-  // 非正式价格（盘后、夜盘、盘前）
-  const informalPrice = htmlDoc.querySelector('.disc-info .price-current .disc-price')?.textContent?.trim();
-
-  if (informalPrice) {
-    return informalPrice;
-  }
-
-  // 盘中价格
-  const currentPrice = htmlDoc.querySelector('.price-current .price')?.textContent?.trim();
+  const currentPrice = htmlDoc.querySelector('#main-content-wrapper .price .container section:last-child .price')?.textContent?.trim();
 
   return currentPrice
 }
@@ -56,7 +48,7 @@ async function start() {
 
     const timestamp = new Date().getTime();
 
-    const CODE_LIST = await fs.readJson(`${__dirname}/data/code.json`);
+    const CODE_LIST = ['MSFT-US'] // await fs.readJson(`${__dirname}/data/code.json`);
 
     const results = await runQueue(
       CODE_LIST,
@@ -97,4 +89,3 @@ async function start() {
   // }
 }
 start();
-
