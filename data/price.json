@@ -1,26 +1,9 @@
 {
-  "timestamp": 1770710195199,
+  "timestamp": 1770710892436,
   "data": [
     {
-      "code": "PDD-US"
-    },
-    {
-      "code": "MSFT-US"
-    },
-    {
-      "code": "AAPL-US"
-    },
-    {
-      "code": "GOOG-US"
-    },
-    {
-      "code": "UNH-US"
-    },
-    {
-      "code": "BRK.B-US"
-    },
-    {
-      "code": "GLDM-US"
+      "code": "MSFT-US",
+      "price": "415.90"
     }
   ]
 }
