@@ -10,10 +10,8 @@ const getPrice = async (companyCode) => {
   // const html = await axios.get(`https://www.futunn.com/stock/${companyCode}`);
 
   const html = await axios.get(`https://hk.finance.yahoo.com/quote/${companyCode}/`,{
-  headers: {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-    'Accept-Encoding': 'gzip, deflate', // Adjust based on what the server supports
-  },
+  headers: { 'Accept-Encoding': 'identity' }, // Ask server not to compress
+  decompress: false, // Disable Axios's decompression
 });
 
   const htmlDoc = htmlParser.parse(html.data);
